@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import model.Etape;
 import model.Itineraire;
+import model.ItineraireDto;
 
 @Repository
 public class ItineraireDao {
@@ -23,7 +24,8 @@ public class ItineraireDao {
 		return em.createQuery("select i from Itineraire i order by i.nom", Itineraire.class).getResultList();
 	}
 
-	public void addItineraire(Itineraire itineraire) {
+	public void addItineraire(ItineraireDto itineraireDto) {
+		Itineraire itineraire = new Itineraire(itineraireDto);
 		em.persist(itineraire);
 	}
 
@@ -32,5 +34,14 @@ public class ItineraireDao {
 		  .setParameter("iditineraire", itineraireId)
 		  .executeUpdate();
 	}
+	
+    public void updateItineraire(ItineraireDto itineraireDto) {
+        Itineraire iti = this.getItineraire(itineraireDto.getItineraire_id());
+        if(iti!= null)  {
+            iti.setNom(itineraireDto.getNom());
+            iti.setDescription(itineraireDto.getDescription());
+            iti.setEtapes(itineraireDto.getEtapes());
+        }  
+    }
 
 }

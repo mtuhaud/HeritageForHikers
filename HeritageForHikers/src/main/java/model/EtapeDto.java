@@ -2,18 +2,8 @@ package model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-
-@Entity
-public class Etape {
+public class EtapeDto {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long etape_id;
 	private String nom;
 	private String description;
@@ -21,21 +11,6 @@ public class Etape {
 	private List<Commentaire> commentaires;
 	private List<Like> likes;
 	private List<Photo> photos;
-	
-	public Etape() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Etape(EtapeDto etapeDto) {
-		this.nom = etapeDto.getNom();
-		this.description = etapeDto.getDescription();
-		this.qrCode = etapeDto.getQrCode();
-		this.commentaires = etapeDto.getCommentaires();
-		this.likes = etapeDto.getLikes();
-		this.photos = etapeDto.getPhotos();
-	}
-	
 	public Long getEtape_id() {
 		return etape_id;
 	}
@@ -78,13 +53,6 @@ public class Etape {
 	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
 	}
-	
-	
-	
-	
-
-	
-	
 	
 	
 
