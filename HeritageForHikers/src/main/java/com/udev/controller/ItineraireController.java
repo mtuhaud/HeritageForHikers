@@ -1,19 +1,19 @@
-package controller;
+package com.udev.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import dao.ItineraireDao;
-import model.Itineraire;
-import model.ItineraireDto;
+import com.udev.dao.ItineraireDao;
+import com.udev.model.Itineraire;
+import com.udev.model.ItineraireDto;
 
 @RestController
 @RequestMapping("/api")
@@ -43,6 +43,11 @@ public class ItineraireController {
 		@PostMapping(path="/itineraires/{itineraireId}/update", consumes="application/json")
 		public void updateItineraire(@RequestBody ItineraireDto itineraireDto) {
 			itineraireDao.updateItineraire(itineraireDto);
+		}
+		
+		@PostMapping(path="/itineraires/{itineraireId}/delete", consumes="application/json")
+		public void deleteItineraire(@PathVariable("itineraireId") long itineraireId) {
+			itineraireDao.deleteItineraire(itineraireId);
 		}
 	    
 	    

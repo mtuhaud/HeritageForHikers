@@ -1,15 +1,35 @@
-package model;
+package com.udev.model;
 
 import java.util.List;
 
-public class ItineraireDto {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+@Entity
+public class Itineraire {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long itineraire_id;
 	private String nom;
 	private String description;
+	// @OneToMany(mappedBy = "enclos")
 	private List<Etape> etapes;
+
+	public Itineraire() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
-	
+	public Itineraire(ItineraireDto itineraireDto) {
+		this.nom = itineraireDto.getNom();
+		this.description = itineraireDto.getDescription();
+		this.etapes = itineraireDto.getEtapes();
+	}
 	public Long getItineraire_id() {
 		return itineraire_id;
 	}
@@ -34,8 +54,6 @@ public class ItineraireDto {
 	public void setEtapes(List<Etape> etapes) {
 		this.etapes = etapes;
 	}
-	
-	
 	
 	
 

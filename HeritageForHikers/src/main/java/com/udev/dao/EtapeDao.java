@@ -1,13 +1,14 @@
-package dao;
+package com.udev.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
-import model.Etape;
-import model.EtapeDto;
-import model.Itineraire;
-import model.ItineraireDto;
+
+import com.udev.model.Etape;
+import com.udev.model.EtapeDto;
+import com.udev.model.Itineraire;
+import com.udev.model.ItineraireDto;
 
 
 @Repository
@@ -41,6 +42,10 @@ public class EtapeDao {
         }  
     }
 
-
+	public void deleteEtape(long etapeId) {
+		em.createQuery("delete from Etape e where e.etape_id = :idetape")
+		  .setParameter("idetape", etapeId)
+		  .executeUpdate();
+	}
 
 }
