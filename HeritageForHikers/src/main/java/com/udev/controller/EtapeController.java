@@ -26,29 +26,29 @@ public class EtapeController {
 	  @Autowired
 	  private EtapeDao etapeDao;
 	
-	@GetMapping(path="/etapes/{etapeId}", consumes="application/json")
-	public Etape getEtape(@PathVariable("etapeId") long etapeId) {
-		return etapeDao.getEtape(etapeId);
-	}
-  
-    @GetMapping(path="/etapes", consumes="application/json")
-    public List<Etape> getAllEtapes(@RequestBody Etape etape) {
-    	return etapeDao.getAllEtapes();
-    }
-    
-    @PostMapping(path="/etape", consumes="application/json")
-    public void addEtape(@RequestBody EtapeDto etapeDto) {
-    	etapeDao.addEtape(etapeDto);
-    }
-	
-	@PostMapping(path="/etapes/{etapeId}/update", consumes="application/json")
-	public void updateEtape(@RequestBody EtapeDto etapeDto) {
-		etapeDao.updateEtape(etapeDto);
-	}
-	
-	@PostMapping(path="/etapes/{etapeId}/delete", consumes="application/json")
-	public void deleteEtape(@PathVariable("etapeId") long etapeId) {
-		etapeDao.deleteEtape(etapeId);
-	}
+		@GetMapping(path="/etapes/{etapeId}", produces="application/json" )
+		public Etape getEtape(@PathVariable("etapeId") long etapeId) {
+			return etapeDao.getEtape(etapeId);
+		}
+	  
+	    @GetMapping(path="/etapes", produces="application/json")
+	    public List<Etape> getAllEtapes() {
+	    	return etapeDao.getAllEtapes();
+	    }
+	    
+	    @PostMapping(path="/etape", consumes="application/json")
+	    public void addEtape(@RequestBody EtapeDto etapeDto) {
+	    	etapeDao.addEtape(etapeDto);
+	    }
+		
+		@PostMapping(path="/etapes/{etapeId}/update", consumes="application/json")
+		public void updateEtape(@RequestBody EtapeDto etapeDto) {
+			etapeDao.updateEtape(etapeDto);
+		}
+		
+		@PostMapping(path="/etapes/{etapeId}/delete", consumes="application/json")
+		public void deleteEtape(@PathVariable("etapeId") long etapeId) {
+			etapeDao.deleteEtape(etapeId);
+		}
 
 }

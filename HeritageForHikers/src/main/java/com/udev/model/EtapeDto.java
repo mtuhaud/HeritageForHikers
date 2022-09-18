@@ -7,7 +7,7 @@ public class EtapeDto {
 	private Long etape_id;
 	private String nom;
 	private String description;
-	private int qrCode;
+	private String qrCode;
 	private List<Commentaire> commentaires;
 	private List<Like> likes;
 	private List<Photo> photos;
@@ -29,10 +29,10 @@ public class EtapeDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getQrCode() {
+	public String getQrCode() {
 		return qrCode;
 	}
-	public void setQrCode(int qrCode) {
+	public void setQrCode(String qrCode) {
 		this.qrCode = qrCode;
 	}
 	public List<Commentaire> getCommentaires() {

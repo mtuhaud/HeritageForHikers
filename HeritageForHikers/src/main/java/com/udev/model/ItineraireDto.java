@@ -2,12 +2,20 @@ package com.udev.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ItineraireDto {
 	
+	@JsonProperty("itineraire_id")
 	private Long itineraire_id;
+	@JsonProperty("nom")
 	private String nom;
+	@JsonProperty("description")
 	private String description;
-	private List<Etape> etapes;
+	@JsonProperty("niveau_id")
+	private Long niveau_id;
+	
+	// private List<Etape> etapes;
 	
 	
 	public Long getItineraire_id() {
@@ -28,12 +36,19 @@ public class ItineraireDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<Etape> getEtapes() {
-		return etapes;
+	public Long getNiveau_id() {
+		return niveau_id;
 	}
-	public void setEtapes(List<Etape> etapes) {
-		this.etapes = etapes;
+	public void setNiveau_id(Long niveau_id) {
+		this.niveau_id = niveau_id;
 	}
+	
+//	public List<Etape> getEtapes() {
+//		return etapes;
+//	}
+//	public void setEtapes(List<Etape> etapes) {
+//		this.etapes = etapes;
+//	}
 	
 	
 	

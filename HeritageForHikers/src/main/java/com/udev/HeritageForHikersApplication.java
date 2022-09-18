@@ -1,4 +1,4 @@
-package com.udev.HeritageForHikersApplication;
+package com.udev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

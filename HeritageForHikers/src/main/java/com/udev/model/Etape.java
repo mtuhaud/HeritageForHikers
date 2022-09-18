@@ -17,10 +17,13 @@ public class Etape {
 	private Long etape_id;
 	private String nom;
 	private String description;
-	private int qrCode;
-	private List<Commentaire> commentaires;
-	private List<Like> likes;
-	private List<Photo> photos;
+	private String qrCode;
+	// @OneToMany
+//	private List<Commentaire> commentaires;
+	// @OneToMany
+//	private List<Like> likes;
+	// @OneToMany
+//	private List<Photo> photos;
 	
 	public Etape() {
 		super();
@@ -31,9 +34,9 @@ public class Etape {
 		this.nom = etapeDto.getNom();
 		this.description = etapeDto.getDescription();
 		this.qrCode = etapeDto.getQrCode();
-		this.commentaires = etapeDto.getCommentaires();
-		this.likes = etapeDto.getLikes();
-		this.photos = etapeDto.getPhotos();
+//		this.commentaires = etapeDto.getCommentaires();
+//		this.likes = etapeDto.getLikes();
+//		this.photos = etapeDto.getPhotos();
 	}
 	
 	public Long getEtape_id() {
@@ -54,30 +57,30 @@ public class Etape {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getQrCode() {
+	public String getQrCode() {
 		return qrCode;
 	}
-	public void setQrCode(int qrCode) {
+	public void setQrCode(String qrCode) {
 		this.qrCode = qrCode;
 	}
-	public List<Commentaire> getCommentaires() {
-		return commentaires;
-	}
-	public void setCommentaires(List<Commentaire> commentaires) {
-		this.commentaires = commentaires;
-	}
-	public List<Like> getLikes() {
-		return likes;
-	}
-	public void setLikes(List<Like> likes) {
-		this.likes = likes;
-	}
-	public List<Photo> getPhotos() {
-		return photos;
-	}
-	public void setPhotos(List<Photo> photos) {
-		this.photos = photos;
-	}
+//	public List<Commentaire> getCommentaires() {
+//		return commentaires;
+//	}
+//	public void setCommentaires(List<Commentaire> commentaires) {
+//		this.commentaires = commentaires;
+//	}
+//	public List<Like> getLikes() {
+//		return likes;
+//	}
+//	public void setLikes(List<Like> likes) {
+//		this.likes = likes;
+//	}
+//	public List<Photo> getPhotos() {
+//		return photos;
+//	}
+//	public void setPhotos(List<Photo> photos) {
+//		this.photos = photos;
+//	}
 	
 	
 	

@@ -1,9 +1,12 @@
 package com.udev.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.udev.model.Etape;
@@ -16,32 +19,23 @@ public class ItineraireDao {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public Itineraire getItineraire(long itineraireId) {
-		return em.find(Itineraire.class, itineraireId);
+	@Autowired
+	private ItineraireRepository itineraireRepository;
+	
+	public Optional<Itineraire> getItineraire(long itineraireId) {
+		return itineraireRepository.findById(itineraireId);
 	}
 	
 	public List<Itineraire> getAllItineraires() {
-		return em.createQuery("select i from Itineraire i order by i.nom", Itineraire.class).getResultList();
-	}
-
-	public void addItineraire(ItineraireDto itineraireDto) {
-		Itineraire itineraire = new Itineraire(itineraireDto);
-		em.persist(itineraire);
-	}
-
-	public void deleteItineraire(long itineraireId) {
-		em.createQuery("delete from Itineraire i where i.itineraire_id = :iditineraire")
-		  .setParameter("iditineraire", itineraireId)
-		  .executeUpdate();
+		return (List<Itineraire>) itineraireRepository.findAll();
 	}
 	
-    public void updateItineraire(ItineraireDto itineraireDto) {
-        Itineraire iti = this.getItineraire(itineraireDto.getItineraire_id());
-        if(iti!= null)  {
-            iti.setNom(itineraireDto.getNom());
-            iti.setDescription(itineraireDto.getDescription());
-            iti.setEtapes(itineraireDto.getEtapes());
-        }  
-    }
+	public Itineraire addItineraire(Itineraire itineraire) {
+		return itineraireRepository.save(itineraire);
+	}
+	
+	public void deleteItineraire(Long id) {
+		itineraireRepository.deleteById(id);
+	}
 
 }

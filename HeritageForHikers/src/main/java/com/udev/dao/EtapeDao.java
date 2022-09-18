@@ -36,9 +36,9 @@ public class EtapeDao {
         	etape.setNom(etapeDto.getNom());
         	etape.setDescription(etapeDto.getDescription());
         	etape.setQrCode(etapeDto.getQrCode());
-        	etape.setCommentaires(etapeDto.getCommentaires());
-        	etape.setLikes(etapeDto.getLikes());
-        	etape.setPhotos(etapeDto.getPhotos());
+//        	etape.setCommentaires(etapeDto.getCommentaires());
+//        	etape.setLikes(etapeDto.getLikes());
+//        	etape.setPhotos(etapeDto.getPhotos());
         }  
     }
 
