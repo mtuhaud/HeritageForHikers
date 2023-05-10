@@ -13,11 +13,11 @@ import com.udev.model.Etape;
 import com.udev.model.Itineraire;
 import com.udev.model.ItineraireDto;
 
+import lombok.AllArgsConstructor;
+
 @Repository
+@AllArgsConstructor
 public class ItineraireDao {
-	
-	@PersistenceContext
-	private EntityManager em;
 	
 	@Autowired
 	private ItineraireRepository itineraireRepository;
@@ -30,7 +30,7 @@ public class ItineraireDao {
 		return (List<Itineraire>) itineraireRepository.findAll();
 	}
 	
-	public Itineraire addItineraire(Itineraire itineraire) {
+	public Itineraire saveItineraire(Itineraire itineraire) {
 		return itineraireRepository.save(itineraire);
 	}
 	

@@ -1,51 +1,49 @@
 package com.udev.dao;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.udev.model.Etape;
 import com.udev.model.EtapeDto;
-import com.udev.model.Itineraire;
-import com.udev.model.ItineraireDto;
+import lombok.AllArgsConstructor;
 
 
 @Repository
+@AllArgsConstructor
 public class EtapeDao {
 	
-	@PersistenceContext
-	private EntityManager em;
+	@Autowired
+	private EtapeRepository etapeRepository;
 	
-	public Etape getEtape(long etapeId) {
-		return em.find(Etape.class, etapeId);
+	public Optional<Etape> getEtape(long etapeId) {
+		return etapeRepository.findById(etapeId);
 	}
 	
 	public List<Etape> getAllEtapes() {
-		return em.createQuery("select e from Etape e order by e.nom", Etape.class).getResultList();
+		return etapeRepository.findAll();
 	}
 
 	public void addEtape(EtapeDto etapeDto) {
-		Etape etape = new Etape(etapeDto);
-		em.persist(etape);
 	}
 	
     public void updateEtape(EtapeDto etapeDto) {
-    	Etape etape = this.getEtape(etapeDto.getEtape_id());
-        if(etape!= null)  {
-        	etape.setNom(etapeDto.getNom());
-        	etape.setDescription(etapeDto.getDescription());
-        	etape.setQrCode(etapeDto.getQrCode());
+    	// TODO : deplacer logique metier dans le service qui contienr logique metier
+    	// Etape etape = this.getEtape(etapeDto.getEtape_id());
+//        if(etape!= null)  {
+//        	etape.setNom(etapeDto.getNom());
+//        	etape.setDescription(etapeDto.getDescription());
+//        	etape.setQrCode(etapeDto.getQrCode());
 //        	etape.setCommentaires(etapeDto.getCommentaires());
 //        	etape.setLikes(etapeDto.getLikes());
 //        	etape.setPhotos(etapeDto.getPhotos());
-        }  
+        // }  
     }
 
 	public void deleteEtape(long etapeId) {
-		em.createQuery("delete from Etape e where e.etape_id = :idetape")
-		  .setParameter("idetape", etapeId)
-		  .executeUpdate();
+//		em.createQuery("delete from Etape e where e.etape_id = :idetape")
+//		  .setParameter("idetape", etapeId)
+//		  .executeUpdate();
 	}
 
 }
