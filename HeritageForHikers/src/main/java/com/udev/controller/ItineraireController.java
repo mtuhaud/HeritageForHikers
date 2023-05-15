@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.udev.model.Itineraire;
+import com.udev.model.ItineraireDto;
 import com.udev.service.ItineraireService;
 import lombok.AllArgsConstructor;
 
@@ -26,23 +27,23 @@ public class ItineraireController {
 	private ItineraireService itineraireService;
 
 	@GetMapping(path = "/itineraire/{itineraireId}", produces = "application/json")
-	public Optional<Itineraire> getItineraire(@PathVariable("itineraireId") long itineraireId) {
+	public Optional<ItineraireDto> getItineraire(@PathVariable("itineraireId") long itineraireId) {
 		return itineraireService.getItineraire(itineraireId);
 	}
 
 	@GetMapping(path = "/itineraires", produces = "application/json")
-	public List<Itineraire> getAllItineraires() {
-		return (List<Itineraire>) itineraireService.getAllItineraires();
+	public List<ItineraireDto> getAllItineraires() {
+		return itineraireService.getAllItineraires();
 	}
 
 	@PostMapping(path = "/itineraire", consumes = "application/json")
-	public Itineraire addItineraire(@RequestBody Itineraire itineraire) {
-		return itineraireService.addItineraire(itineraire);
+	public Itineraire addItineraire(@RequestBody ItineraireDto itineraireDto) {
+		return itineraireService.addItineraire(itineraireDto);
 	}
 
 	@PutMapping(path = "/{id}")
-	public Itineraire updateItineraire(@RequestBody Itineraire itineraire, @PathVariable("id") long id) {
-		return itineraireService.updateItineraire(id, itineraire);
+	public Itineraire updateItineraire(@RequestBody ItineraireDto itineraireDto, @PathVariable("id") long id) {
+		return itineraireService.updateItineraire(id, itineraireDto);
 	}
 
 	@DeleteMapping(path = "/cancel/{id}")

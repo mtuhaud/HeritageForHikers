@@ -1,6 +1,5 @@
 package com.udev.model;
 
-import java.util.List;
 import lombok.Data;
 
 
@@ -11,9 +10,11 @@ import lombok.Data;
 	private String nom;
 	private String description;
 	private String qrCode;
-	private List<Commentaire> commentaires;
-	private List<Like> likes;
-	private List<Photo> photos;
+//	private List<Commentaire> commentaires;
+//	private List<Like> likes;
+//	private List<Photo> photos;
+	
+	
 	
 	
 

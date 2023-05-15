@@ -4,16 +4,17 @@ import java.util.List;
 import java.util.Optional;
 
 import com.udev.model.Itineraire;
+import com.udev.model.ItineraireDto;
 
 public interface ItineraireService {
 	
-	 Optional<Itineraire> getItineraire(long itineraireId);
+	 Optional<ItineraireDto> getItineraire(long itineraireId);
 	 
-	 List<Itineraire> getAllItineraires();
+	 List<ItineraireDto> getAllItineraires();
 	 
-	 Itineraire addItineraire(Itineraire itineraire);
+	 Itineraire addItineraire(ItineraireDto itineraireDto);
 	 
-	 Itineraire updateItineraire(Long id, Itineraire itineraire);
+	 Itineraire updateItineraire(Long id, ItineraireDto itineraireDto);
 	 
 	 void deleteItineraire (Long id);
 	 

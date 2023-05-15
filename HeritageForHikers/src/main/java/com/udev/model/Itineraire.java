@@ -1,20 +1,17 @@
 package com.udev.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+
 
 
 @Entity
 public class Itineraire implements Serializable {
 	
+	private static final long serialVersionUID = -3067996720739431656L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long itineraire_id;
